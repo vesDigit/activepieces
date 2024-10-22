@@ -245,11 +245,14 @@ const increaseMajorVersion = (version: string): string => {
 
 async function findAllPiecesVersionsSortedByNameAscVersionDesc({ projectId, platformId, release }: { projectId?: string, platformId?: string, release: string | undefined }): Promise<PieceMetadataSchema[]> {
     const piece = (await localPieceCache.getSortedbyNameAscThenVersionDesc()).filter((piece) => {
-        return isOfficialPiece(piece) || isProjectPiece(projectId, piece) || isPlatformPiece(platformId, piece)
+        return isOfficialPiece(piece) || isProjectPiece(projectId, piece) || isPlatformPiece(platformId, piece) || isGloballyAvailablePiece(piece)
     }).filter((piece) => isSupportedRelease(release, piece))
     return piece
 }
 
+function isGloballyAvailablePiece(piece: PieceMetadataSchema): boolean {
+    return isNil(piece.projectId) && isNil(piece.platformId)
+}
 function isSupportedRelease(release: string | undefined, piece: PieceMetadataSchema): boolean {
     if (isNil(release)) {
         return true
