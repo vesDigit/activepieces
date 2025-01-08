@@ -222,7 +222,7 @@ const FlowsPage = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-4 w-full">
+    <div className="flex flex-col gap-4 w-full pt-5 pl-5 pr-5">
       <div className="mb-4 flex">
         <TableTitle>{t('Flows')}</TableTitle>
         <div className="ml-auto flex flex-row gap-2">

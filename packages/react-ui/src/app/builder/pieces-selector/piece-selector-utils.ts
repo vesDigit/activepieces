@@ -1,7 +1,3 @@
-import {
-  PieceStepMetadata,
-  StepMetadata,
-} from '@/features/pieces/lib/pieces-hook';
 import { PieceStepMetadata, StepMetadata } from '@/features/pieces/lib/types';
 import {
   Action,

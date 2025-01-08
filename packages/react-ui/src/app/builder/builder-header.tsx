@@ -64,7 +64,10 @@ export const BuilderHeader = () => {
     flowVersion.id === flow.publishedVersionId;
 
   const folderName = folderData?.displayName ?? t('Uncategorized');
-
+  const showBuilder = () => {
+    const webhookId = window.location.href.split('/').pop();
+    window.location.href = `https://formbuilder.valyrian.space/builder?webhookId=${webhookId}`;
+  };
   return (
     <div className="bg-background ">
       <div className="relative items-left flex h-[70px] w-full p-4 bg-muted/50 border-b">
@@ -156,6 +159,20 @@ export const BuilderHeader = () => {
               <TooltipContent side="bottom">{t('Support')}</TooltipContent>
             </Tooltip>
           )}
+          <Tooltip>
+          <TooltipTrigger asChild>
+           <Button
+                variant="ghost"
+                onClick={() => showBuilder()}
+                className="gap-2 px-2"
+              >
+                <img src="/assets/material-symbols/svg-400/rounded/draw.svg" className="fill-body w-[20px] h-[25px]" alt="Form Builder" />
+                {t('Form Builder')}
+              </Button>
+           </TooltipTrigger>
+            <TooltipContent side="bottom">{t('Form Builder')}</TooltipContent>
+          </Tooltip>
+           {/* <app-generate-doc-button></app-generate-doc-button> */}
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
